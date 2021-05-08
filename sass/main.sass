@@ -1,0 +1,668 @@
+@import '_variables.sass'
+    
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+body, button
+    font-family: 'Lato', sans-serif;
+
+button, .switch, .huge-switch, .section__text--link, .carousel__arrow
+    cursor: pointer
+
+.wrapper
+    margin: 0 auto
+
+.flex
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+
+.container
+    width: 1088px
+    margin: 0 auto
+
+.submit
+    display: flex
+    flex-direction: column
+    width: 350px
+    margin: 0 auto
+
+.disclaimer
+    margin-bottom: 20px
+    width: 428px
+    +font(12px, light)
+    display: flex
+
+.button
+    position: relative
+    height: 89px
+    background-color: $main-color
+    margin-top: 20px
+    +font(26px, 900)
+    color: white
+    border: none
+    padding: 0 69px
+    overflow: visible
+    transition: .2s
+
+    &:disabled
+        background-color: $inactive-color
+        cursor: not-allowed
+
+        &:hover
+            filter: brightness(1)
+
+            &::before
+                filter: brightness(1)
+
+        &::after
+            background-color: $main-color
+
+    &:hover
+        filter: brightness(1.1)
+
+        &::before
+            filter: brightness(.91)
+
+
+    &::before
+        +setPseudoElement
+        +size(37px, 37px)
+        border-radius: 30px
+        +positionRB(-11px, -11px)
+        background: url(./../images/header.jpg) 0 0 no-repeat fixed;
+
+    &::after
+        +setPseudoElement
+        +size(27px, 27px)
+        border-radius: 30px
+        background-color: $accent-color
+        +positionRB(-6px, -6px)
+        transition: .2s
+    
+    &--white
+        font-size: 20px
+        padding: 0
+        height: 73px
+ 
+        &::before
+            background: none
+            background-color: white
+
+    &--gray
+        font-size: 20px
+        padding: 0
+        height: 73px
+
+        &::before
+            background: none
+            background-color: #F8F8F8
+        
+.huge-switch
+    position: relative
+    height: 44px
+    background-color: $inactive-color
+    border-radius: 22px
+    opacity: .8
+    padding-left: 49px
+    margin-bottom: 18px
+    +font(17px, medium)
+    color: white
+    display: flex
+
+    p
+        transform: translateY(55%)
+
+    &::before
+        +setPseudoElement
+        +positionLT(3px, 3px)
+        +size(155px, 38px)
+        border-radius: 20px
+        background-color: $accent-color
+        box-shadow: -3px 0 12px rgba(0, 0, 0, .2)
+        transition: .2s
+
+    &::after
+        content: 'Spełniam warunki'
+        +centerFlex
+        position: absolute
+        +positionLT(2px, 2px)
+        +size(155px, 40px)
+    
+    p
+        +centerFlex
+        position: absolute
+        right: 16px
+
+    &--inactive
+        &::before
+            background-color: $main-color
+            left: 149px
+            width: 208px
+            
+.switch
+    +size(36px, 22px)
+    border-radius: 13px
+    margin-right: 12px
+    background-color: $accent-color
+    position: relative
+    flex-shrink: 0
+    transition: .2s
+
+    &::after
+        +setPseudoElement
+        +size(20px, 20px)
+        background-color: #fff
+        border-radius: 10px
+        +positionRB(1px, 1px)
+        transition: .2s
+    
+    &--inactive
+        background-color: $inactive-color
+
+        &::after
+            right: 15px
+
+.header
+    height: 769px
+    position: relative
+    background-image: url(./../images/header.jpg)
+    background-size: cover
+
+    &::before
+        +setPseudoElement
+        z-index: 0
+        +size(768px, 100%)
+        background: linear-gradient(90deg, rgba(0,0,0,0.38) 0%, rgba(255,255,255,0) 100%)
+
+    &__switch
+        position: absolute
+        top: 33px
+        right: 50px
+        +size(313px, 44px)
+        background-color: #fff
+        border-radius: 22px
+        opacity: .8
+        padding-left: 49px
+        +font(17px, medium)
+        color: #959595
+        display: flex
+        align-items: center
+
+        &::after
+            content: 'Konto jeden'
+            +centerFlex
+            position: absolute
+            +positionRB(2px, 2px)
+            +size(137px, 40px)
+            border-radius: 20px
+            background-color: $accent-color
+            color: white
+            box-shadow: -3px 0 12px rgba(0, 0, 0, .2)
+
+    &__content
+        position: relative
+        z-index: 20
+        +size(593px, 100%)
+        padding: 246px 0 0 0
+        text-shadow: 0 3px 6px rgba(0,0,0,.4)
+
+    &__text
+        +font(30px, medium)
+        color: white
+
+        &--big
+            margin-top: 10px
+            +font(55px, 900)
+        
+        &--red
+            color: $main-color
+    
+    &__disclaimer
+        margin-top: 70px
+        width: 428px
+        +font(12px, bold)
+        color: white
+        display: flex
+        text-shadow: 0 3px 6px rgba(0,0,0,.4)
+
+.section
+    &__title
+        +font(45px, 900)
+        color: $main-color
+        text-align: center
+        margin-bottom: 9px
+
+    &__subtitle
+        +font(24px, normal)
+        color: $main-color
+        text-align: center
+    
+    &__text
+        font-size: 16px
+        text-align: center
+
+        &--smaller
+            font-size: 14px
+
+        &--smallest
+            +font(12px, 300)
+
+        &--bigger
+            font-size: 18px
+
+        &--inactive
+            display: none
+
+.section1
+    height: 750px
+    margin-top: 36px
+    margin-bottom: 46px
+    display: flex
+    justify-content: space-between
+
+    .section__title
+        text-align: left
+        margin-bottom: 56px
+
+    .sidebar
+        width: 360px
+        display: flex
+        flex-direction: column
+
+        .submit
+            margin-top: auto
+
+    .profits
+        +size(660px, 610px)
+        margin-top: 20px
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
+
+        .profit
+            +size(321px, 192px)
+            margin-bottom: 17px
+            padding: 14px
+            text-align: center
+            display: flex
+            flex-direction: column
+            align-items: center
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16)
+            border-radius: 6px
+
+            &__image
+                margin-bottom: 7px
+                transform: translateX(9px)
+
+                &--inactive
+                    display: none
+
+
+.section2
+    height: 438px
+    background-image: url(./../images/interphoto.jpg)
+
+.section3
+    background: linear-gradient(0deg, rgba(247,247,247,1) 0%, rgba(255,255,255,0) 100%)
+    padding: 46px 0 51px
+
+    .section__title
+        margin-bottom: 48px
+
+.section4
+    padding: 46px 0 56px
+
+.section5
+    height: 823px
+    background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(247,247,247,1) 100%)
+    padding-top: 53px
+
+    .section__subtitle
+        margin-bottom: 25px
+
+    .left-side
+        flex-basis: 48%
+        display: flex
+        justify-content: flex-end
+
+    .right-side
+        flex-basis: 48%
+
+        .section__subtitle
+            margin-top: 25px
+            text-align: left
+
+        ul
+            list-style: url(./../images/tick-bullet.png)
+            margin-left: 24px
+
+            li
+                margin-bottom: 16px
+                line-height: 30px
+
+    .section__text--smallest
+        flex-basis: 100%
+        margin-top: 38px
+
+.section6
+    height: 549px
+
+    .section__title
+        margin: 35px 0 53px
+    
+    .section__text--link
+        margin-top: 89px
+        text-decoration: underline
+
+    .boxes
+        display: flex
+        margin: 0 auto
+        justify-content: space-between
+
+        &__box
+            display: flex
+            flex-direction: column
+            align-items: center
+            flex-basis: 22%
+
+            p
+                width: 100%
+
+            .box__number
+                font-size: 30px
+                width: 149px
+                color: $main-color
+                text-align: center
+                padding-bottom: 18px
+                margin-bottom: 27px
+                border-bottom: 2px solid $main-color
+            
+            .section__text
+                line-height: 23px
+
+.section7
+    height: 769px
+    background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(247,247,247,1) 100%)
+    padding-top: 79px
+
+    .section__title
+        margin-bottom: 70px
+
+    .boxes
+        display: flex
+        padding-top: 42px
+        width: 760px
+        margin: 0 auto 87px
+        justify-content: space-between
+
+        &__box
+            display: flex
+            flex-direction: column
+            align-items: center
+            flex-basis: 30%
+
+            p
+                width: 100%
+
+            img
+                margin-bottom: 20px
+
+.section8
+    padding: 41px 0 30px
+
+.footer
+    height: 500px
+    background-color: #7C7C7C
+    font-size: 12px
+    line-height: 15px
+    color: white
+
+    &::before
+        content: ''
+        display: block
+        height: 62px
+        background-color: #AFAFAF
+        margin-bottom: 43px
+    
+    &__paragraph
+        &--underline
+            text-decoration: underline
+
+.profit-area
+    display: flex
+    justify-content: center
+    margin-bottom: 30px
+
+.profit
+    +size(321px, 192px)
+    margin-bottom: 17px
+    padding: 16px
+    text-align: center
+    display: flex
+    flex-direction: column
+    align-items: center
+    background-color: #fff
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16)
+    border-radius: 6px
+
+    &--long
+        height: auto
+
+        p
+            width: inherit
+            padding-left: 16px
+            padding-right: 16px
+
+    &--long:nth-child(2)
+        margin-left: 47px
+        
+
+    &__image
+        margin-bottom: 7px
+
+.carousel
+    display: flex
+    margin-top: 48px
+    justify-content: space-between
+
+    &__arrow
+        display: flex
+        align-items: center
+        padding-bottom: 10%
+
+        &:hover
+            filter: brightness(.8)
+
+    #c2-al, #c2-ar
+        padding-bottom: 5%
+
+    .carousel__body
+        width: 752px
+        display: flex
+        justify-content: space-between
+
+    &__section
+        width: 217px
+
+        &:nth-child(1) .carousel__element
+            background-color: #FD9999
+
+        &:nth-child(2) .carousel__element
+            background-color: #804E4E
+
+        &:nth-child(3) .carousel__element
+            background-color: #DD3636
+        
+        .section__text
+            display: none
+
+        &--active
+            width: 237px
+
+            .section__text
+                display: block
+
+            .carousel__element
+                +size(237px, 432px)
+                border: 10px solid black
+
+                &::after
+                    content: ''
+                    display: block
+                    +size(114px,17px)
+                    background-color: black
+                    border-radius: 0 0 17px 17px
+                    margin: 0 auto
+
+
+    &__element
+        height:  416px
+        background-color: #aaddff
+        border-radius: 28px
+        margin-bottom: 44px
+        box-shadow: 0 3px 10px rgba(0, 0, 0, .16)
+
+.section8
+    .carousel
+        display: flex
+        margin-top: 48px
+        justify-content: space-between
+
+        &__arrow
+            display: flex
+            align-items: center
+            padding-bottom: 10%
+
+        .carousel__body
+            width: 904px
+            display: flex
+            align-items: center
+            justify-content: space-between
+
+        &__element
+            +size(260px, 412px)
+            background-color: white
+            position: relative
+            border-radius: 6px
+            margin-bottom: 44px
+            overflow: hidden
+            display: flex
+            flex-direction: column
+            align-items: center
+
+            &::before
+                +setPseudoElement
+                z-index: 0
+                background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(255,255,255,0) 60%)
+                +size(100%,100%)
+                +positionRB(0, 0)
+
+            &:nth-child(1) .carousel__image
+                background-image: url(./../images/1.jpg)
+                background-position-x: -75px
+
+            &:nth-child(2) .carousel__image
+                background-image: url(./../images/2.jpg)
+                background-position-x: -225px
+                
+            &:nth-child(3) .carousel__image
+                background-image: url(./../images/3.jpg)
+                background-position-x: -175px
+        
+        &__image
+            flex-basis: 100%
+            width: 100%
+            display: flex
+            flex-direction: column
+            justify-content: flex-end
+            align-items: center
+            
+        &__text
+            +font(19px, 900)
+            color: white
+            position: relative
+            margin-bottom: 95px
+            z-index: 2
+            text-align: center
+
+        &__button
+            +size(168px, 47px)
+            background-color: transparent
+            padding-bottom: 4px
+            position: absolute
+            bottom: 29px
+            left: 50%
+            transform: translateX(-50%)
+            border: 3px solid white
+            border-radius: 30px
+            color: white
+            +font(20px, 800)
+            z-index: 3
+
+            &:hover
+                background-color: white
+                color: black
+                filter: brightness(1.1)
+
+        &__details
+            flex-basis: 0
+            transition: .2s
+            padding: 21px 32px
+            display: none
+
+            .details__heading
+                +font(19px, bold)
+                color: $main-color
+                margin-bottom: 17px
+                text-align: center
+
+            .details__text
+                +font(14px, 400)
+                text-align: center
+                line-height: 22px
+
+                &--red
+                    color: $main-color
+                    font-weight: 900
+
+    .carousel__element--active
+        +size(310px, 522px)
+        border: none
+
+        &::before
+            display: none
+
+        .carousel__button
+            background-color: $main-color
+            border-color: $main-color
+
+            &:hover
+                color: white
+
+        .carousel__text
+            display: none
+
+        .carousel__details
+            display: block
+            width: 100%
+            flex-basis: 85%
+
+            p
+                width: 100%
+
+        #carousel__image1
+            background-position-x: 0px
+            background-size: 135%
+
+        #carousel__image2
+            background-position-x: -170px
+            background-position-y: -50px
+            background-size: 175%
+
+            
+        #carousel__image3
+            background-position-x: -100px
+            background-size: 150%
